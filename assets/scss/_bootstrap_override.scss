@@ -1,0 +1,7 @@
+// Override Bootstrap Variables
+$bootstrap-icons-font-dir: "../fonts/bootstrap-icons/font/fonts" !default;
+$container-max-widths: (
+        lg: 100%,
+        xl: 80rem,
+        xxl: 90rem
+);
