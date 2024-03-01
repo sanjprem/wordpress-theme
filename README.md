@@ -35,7 +35,6 @@ This WordPress theme is built with the latest version of Bootstrap (5.3.2), enri
     - Overriding Bootstrap variable: assets/scss/_bootstrap_variable_overrides.scss
     - Custom SCSS: assets/scss/_typography.scss, assets/scss/_features.scss, assets/scss/_main-navigation.scss
     - Custom App Javascript: assets/js/app.js
-    - Custom Bootstrap default Sass variables: bootstrap-boilerplate/assets/scss/_bootstrap_overrides.scss
 
 ## License:
 
