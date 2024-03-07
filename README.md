@@ -22,15 +22,16 @@ This WordPress theme is built with the latest version of Bootstrap (5.3.2), enri
 
 3. Install all dependencies and libraries:
    `npm install`
+   `npm install --global gulp-cli`
 
-4. Run Gulp Task:
+5. Run Gulp Task:
    - `gulp start` - Initial theme setup to move the bootstrap and vendor files to the /assets folder.
 
    - `gulp dev`  - Starts a local server with browserSync and hot reloading on changes to files (PHP, SCSS, JS).
 
    - `gulp build`  - To compile scss to css, minify css and js and build ready for production files in dist folder.
 
-5. Customize:
+6. Customize:
     - Custom App Style : assets/scss/app.scss
     - Overriding Bootstrap variable: assets/scss/_bootstrap_variable_overrides.scss
     - Custom SCSS: assets/scss/_typography.scss, assets/scss/_features.scss, assets/scss/_main-navigation.scss
