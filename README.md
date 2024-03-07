@@ -21,8 +21,8 @@ This WordPress theme is built with the latest version of Bootstrap (5.3.2), enri
    `cd wordpress-theme`
 
 3. Install all dependencies and libraries:
-   `npm install`
-   `npm install --global gulp-cli`
+   - `npm install`
+   - `npm install --global gulp-cli`
 
 5. Run Gulp Task:
    - `gulp start` - Initial theme setup to move the bootstrap and vendor files to the /assets folder.
