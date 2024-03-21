@@ -26,6 +26,14 @@ function register_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'register_scripts' );
 
+function add_type_attribute($tag, $handle, $src) {
+    if ( 'main-script' === $handle ) {
+        $tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+    }
+    return $tag;
+}
+add_filter('script_loader_tag', 'add_type_attribute', 10, 3);
+
 // Remove unused styles and scripts
 function remove_styles_scripts() {
 	wp_dequeue_style( 'wp-block-library' ); // Wordpress core
