@@ -24,18 +24,22 @@ This WordPress theme is built with the latest version of Bootstrap (5.3.2), enri
    - `npm install`
    - `npm install --global gulp-cli`
 
-5. Run Gulp Task:
+4. Run Gulp Task:
    - `gulp start` - Initial theme setup to move the bootstrap and vendor files to the /assets folder.
 
    - `gulp dev`  - Starts a local server with browserSync and hot reloading on changes to files (PHP, SCSS, JS).
 
    - `gulp build`  - To compile scss to css, minify css and js and build ready for production files in dist folder.
 
-6. Customize:
+5. Customize:
     - Custom App Style : assets/scss/app.scss
     - Overriding Bootstrap variable: assets/scss/_bootstrap_variable_overrides.scss
-    - Custom SCSS: assets/scss/_typography.scss, assets/scss/_features.scss, assets/scss/_main-navigation.scss
     - Custom App Javascript: assets/js/app.js
+
+6. HTTPS for LocalWP:
+   - To develop in HTTPS you would be required to these 2 steps:
+     - Uncomment lines 121 - 125
+     - Delete line 126
 
 ## License:
 
