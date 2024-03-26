@@ -1,6 +1,7 @@
 <?php
 
-function theme_supports() {
+function theme_supports(): void
+{
 	// Enable support for Post Thumbnails on posts and pages
 	add_theme_support( 'post-thumbnails' );
 
@@ -31,7 +32,8 @@ function theme_supports() {
 	) );
 
 	// Register menus
-	function register_menus() {
+	function register_menus(): void
+    {
 		register_nav_menus(
 			array(
 				'header-menu' => __( 'Header Menu' ),
@@ -42,7 +44,8 @@ function theme_supports() {
 	add_action( 'init', 'register_menus' );
 
 	// Adding favicon
-	function add_favicon() {
+	function add_favicon(): void
+    {
 		echo '<link rel="shortcut icon" href="' . get_template_directory_uri() . '/assets/img/favicon.png"/>';
 	}
 	add_action( 'wp_head', 'add_favicon' );
@@ -51,12 +54,6 @@ function theme_supports() {
 	remove_filter( 'pre_user_description', 'wp_filter_kses' );
 	// Add sanitization for WordPress posts.
 	add_filter( 'pre_user_description', 'wp_filter_post_kses' );
-
-	// Add excerpt length
-	function my_excerpt_length( $length ) {
-		return 20;
-	}
-
 	// Adding excerpt to pages
 	add_post_type_support( 'page', 'excerpt' );
 }

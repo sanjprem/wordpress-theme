@@ -123,7 +123,7 @@ gulp.task('dev', function browserDev(done) {
         //     key: "C:\\Users\\yourName\\AppData\\Roaming\\Local\\run\\router\\nginx\\certs\\wordpress-theme.test.key",
         //     cert: "C:\\Users\\yourName\\AppData\\Roaming\\Local\\run\\router\\nginx\\certs\\wordpress-theme.test.crt",
         // },
-        proxy: domainName + '.test', // remove if HTTPS is on
+        proxy: 'https://' + domainName + '.test', // remove if HTTPS is on
         host: domainName + '.test',
         open: "external",
         port: 3000,
@@ -139,16 +139,16 @@ gulp.task('dev', function browserDev(done) {
         }
     });
     gulp.watch(['!assets/scss/bootstrap/**', 'assets/scss/*.scss', 'assets/scss/**/*.scss'], gulp.series('scss', function cssBrowserReload(done) {
-        browserSync.reload(undefined);
+        browserSync.reload();
         done(); //Async callback for completion.
     }));
     gulp.watch('assets/js/components/*.js', gulp.series('js', function jsBrowserReload(done) {
-        browserSync.reload(undefined);
+        browserSync.reload();
         done();
     }));
 
     gulp.watch('**/*.php').on('change', function phpBrowserReload() {
-        browserSync.reload(undefined);
+        browserSync.reload();
     });
 
     done();

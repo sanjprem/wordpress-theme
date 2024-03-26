@@ -2,8 +2,7 @@
 
 <main id="index-page">
 	<section class="px-4 py-5 my-5 text-center">
-		<?php // the theme directory in php is the same as the theme directory in the file system ?>
-		<img class="d-block mx-auto mb-4" src="<?php echo get_template_directory_uri(); ?>/assets/img/favicon.png" alt="" width="72" height="72">
+		<img class="d-block mx-auto mb-4" src="<?php echo get_template_directory_uri(); ?>/assets/img/favicon.png" alt="">
 		<h1 class="display-5 fw-bold text-body-emphasis">Centered hero</h1>
 		<div class="col-lg-6 mx-auto">
 			<p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>

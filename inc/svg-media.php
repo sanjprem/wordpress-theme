@@ -8,7 +8,8 @@ function allow_svg_upload( $mimes ) {
 add_filter( 'upload_mimes', 'allow_svg_upload' );
 
 // Ensure Proper Display in Media Library
-function svg_media_thumbnails( $response, $attachment, $meta ) {
+function svg_media_thumbnails($response, $attachment): array
+{
 	if ( $response['type'] === 'image' && $response['subtype'] === 'svg+xml' && class_exists( 'SimpleXMLElement' ) ) {
 		try {
 			$path = get_attached_file( $attachment->ID );
@@ -30,7 +31,7 @@ function svg_media_thumbnails( $response, $attachment, $meta ) {
 					'orientation'   => $height > $width ? 'portrait' : 'landscape',
 				);
 			}
-		} catch ( Exception $e ) {
+		} catch (Exception) {
 			// Handle SVG file read errors here if necessary
 		}
 	}
