@@ -1,24 +1,24 @@
 "use strict";
 
 // Local domain name
-var domainName = 'wordpress-theme'; // Change to your local domain name
+const domainName = 'wordpress-theme'; // Change to your local domain name
 
 // Load plugins
-var gulp            = require('gulp'),
-    merge           = require('merge-stream'),
-    sass            = require('gulp-sass')(require('sass')),
-    del             = require('del'),
-    uglify          = require('gulp-uglify'),
-    cleanCSS        = require('gulp-clean-css'),
-    rename          = require("gulp-rename"),
-    replace         = require('gulp-html-replace'),
-    autoprefixer    = require('gulp-autoprefixer'),
-    concat          = require('gulp-concat'),
-    browserSync     = require('browser-sync').create();
+const gulp = require('gulp'),
+    merge = require('merge-stream'),
+    sass = require('gulp-sass')(require('sass')),
+    del = require('del'),
+    uglify = require('gulp-uglify'),
+    cleanCSS = require('gulp-clean-css'),
+    rename = require("gulp-rename"),
+    replace = require('gulp-html-replace'),
+    autoprefixer = require('gulp-autoprefixer'),
+    concat = require('gulp-concat'),
+    browserSync = require('browser-sync').create();
 
 // Paths
-var componentsJsPath = 'assets/js/components/*.js';
-var scriptsJsPath = 'assets/js'; //folder for final scripts.js/scripts.min.js files
+const componentsJsPath = 'assets/js/components/*.js';
+const scriptsJsPath = 'assets/js'; // folder for final scripts.js/scripts.min.js files
 
 //
 gulp.task('clean', function () {
@@ -29,7 +29,7 @@ gulp.task('clean', function () {
 gulp.task('vendor:js', function () {
     return gulp.src([
         './node_modules/bootstrap/dist/js/*',
-        './node_modules/@popperjs/core/dist/umd/popper.*'
+        "./node_modules/@popperjs/core/dist/umd/popper.*"
     ])
         .pipe(gulp.dest('./assets/js/vendor'));
 });
@@ -46,10 +46,10 @@ gulp.task('vendor:fonts', function () {
 
 // vendor's js to production
 gulp.task('vendor:build', function () {
-    var jsStream = gulp.src([
+    const jsStream = gulp.src([
         './assets/js/vendor/bootstrap.bundle.min.js',
         './assets/js/vendor/popper.min.js'
-    ], { allowEmpty: true })
+    ], {allowEmpty: true});
     return merge(jsStream);
 })
 
@@ -117,7 +117,13 @@ gulp.task('replace', function () {
 // Configure the browserSync task and watch file path for change
 gulp.task('dev', function browserDev(done) {
     browserSync.init({
-        proxy: domainName + '.test',
+        // use if HTTPS is on
+        // proxy: 'https://' + domainName + '.test', // uncomment if HTTPS is turned on
+        // https: {
+        //     key: "C:\\Users\\yourName\\AppData\\Roaming\\Local\\run\\router\\nginx\\certs\\wordpress-theme.test.key",
+        //     cert: "C:\\Users\\yourName\\AppData\\Roaming\\Local\\run\\router\\nginx\\certs\\wordpress-theme.test.crt",
+        // },
+        proxy: domainName + '.test', // remove if HTTPS is on
         host: domainName + '.test',
         open: "external",
         port: 3000,
@@ -133,16 +139,16 @@ gulp.task('dev', function browserDev(done) {
         }
     });
     gulp.watch(['!assets/scss/bootstrap/**', 'assets/scss/*.scss', 'assets/scss/**/*.scss'], gulp.series('scss', function cssBrowserReload(done) {
-        browserSync.reload();
+        browserSync.reload(undefined);
         done(); //Async callback for completion.
     }));
     gulp.watch('assets/js/components/*.js', gulp.series('js', function jsBrowserReload(done) {
-        browserSync.reload();
+        browserSync.reload(undefined);
         done();
     }));
 
     gulp.watch('**/*.php').on('change', function phpBrowserReload() {
-        browserSync.reload();
+        browserSync.reload(undefined);
     });
 
     done();
